@@ -31,6 +31,7 @@
 #pragma comment(lib, "dxgi.lib")
 #include <dwmapi.h>
 #pragma comment(lib, "dwmapi.lib")
+#pragma comment(lib, "hv.lib")
 
 #ifdef DrawText
 #undef DrawText

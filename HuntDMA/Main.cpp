@@ -26,6 +26,7 @@
 #include "Localization/Localization.h"
 #include <windows.h>
 #include "resource.h"
+#include "WebSocketServer.h"
 
 void InitializeGame()
 {
@@ -177,6 +178,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         ShowWindow(hWnd, nCmdShow);
         UpdateWindow(hWnd);
 
+        LOG_INFO("Launching Web Server...");
+        StartWebSocketServer();
+
         LOG_INFO("Detaching caching thread...");
         InitializeESP();
 
@@ -239,6 +243,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                 UpdateCam->Execute();
                 UpdatePlayers->Execute();
                 UpdateBosses->Execute();
+                SendData->Execute();
 
                 if (enableAimBot) Aimbot();
 
